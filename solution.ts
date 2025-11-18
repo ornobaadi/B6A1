@@ -60,7 +60,7 @@ type Book = {
 function printBookDetails(book: Book): void {
     const availability = book.isAvailable ? "Yes" : "No";
     console.log(
-        `Title: ${book.title}, Author: ${book.author}, Published Year: ${book.publishedYear}, Available: ${availability}`
+        `Title: ${book.title}, Author: ${book.author}, Published: ${book.publishedYear}, Available: ${availability}`
     );
 }
 
