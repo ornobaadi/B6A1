@@ -127,3 +127,35 @@ function getUniqueValues(
 const array1 = [1, 2, 3, 4, 5];
 const array2 = [3, 4, 5, 6, 7];
 console.log(getUniqueValues(array1, array2));
+
+// Problem 8
+type Product = {
+    name: string;
+    price: number;
+    quantity: number;
+    discount?: number;
+}
+
+function calculateTotalPrice(products: Product[]): number {
+    if (products.length === 0) return 0;
+
+    const total = products
+        .map((product) => {
+            const basePrice = product.price * product.quantity;
+            if (product.discount !== undefined) {
+                return basePrice - (basePrice * product.discount) / 100;
+            }
+            return basePrice;
+        })
+        .reduce((total, price) => total + price, 0);
+
+    return total;
+}
+
+const products = [
+    { name: 'Pen', price: 10, quantity: 2 },
+    { name: 'Notebook', price: 25, quantity: 3, discount: 10 },
+    { name: 'Bag', price: 50, quantity: 1, discount: 20 },
+];
+
+console.log(calculateTotalPrice(products));
